@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Feliz Dia dos Namorados 💖</title>
+<style>
+body {
+margin: 0;
+padding: 0;
+background: linear-gradient(to right, #a1c4fd, #c2e9fb, #d4fcf9);
+font-family: 'Arial', sans-serif;
+text-align: center;
+overflow-x: hidden;
+overflow-y: scroll;
+color: #fff;
+position: relative;
+}
+
+h1 {
+font-size: 3em;
+margin-top: 50px;
+}
+
+p {
+font-size: 1.5em;
+margin: 20px;
+}
+
+button {
+background: #fff;
+border: none;
+padding: 15px 30px;
+font-size: 1em;
+border-radius: 30px;
+color: #ff69b4;
+cursor: pointer;
+transition: 0.3s;
+margin: 10px;
+}
+
+button:hover {
+background: #ff69b4;
+color: #fff;
+}
+
+.heart {
+position: absolute;
+width: 20px;
+height: 20px;
+background: #00BFFF;
+transform: rotate(45deg);
+animation: floatUp 5s linear infinite;
+opacity: 0.8;
+z-index: 9999;
+}
+
+.heart::before,
+.heart::after {
+content: "";
+position: absolute;
+width: 20px;
+height: 20px;
+background: #00BFFF;
+border-radius: 50%;
+}
+
+.heart::before {
+top: -10px;
+left: 0;
+}
+
+.heart::after {
+left: -10px;
+top: 0;
+}
+
+@keyframes floatUp {
+0% { bottom: -40px; opacity: 0; }
+50% { opacity: 1; }
+100% { bottom: 100%; opacity: 0; }
+}
+
+.gallery {
+margin-top: 30px;
+display: flex;
+justify-content: center;
+flex-wrap: wrap;
+gap: 20px;
+}
+
+.gallery img {
+width: 200px;
+height: 200px;
+object-fit: cover;
+border-radius: 20px;
+border: 4px solid white;
+}
+
+.question {
+margin-top: 40px;
+font-size: 1.8em;
+position: relative;
+}
+
+#noBtn {
+position: relative;
+z-index: 1;
+}
+
+#simBtn {
+animation: piscar 1s infinite alternate;
+}
+
+@keyframes piscar {
+from { opacity: 1; }
+to { opacity: 0.5; }
+}
+
+.audio-player {
+position: absolute;
+top: 10px;
+right: 10px;
+z-index: 1000;
+filter: hue-rotate(190deg);
+}
+
+.carta {
+display: none;
+background: white;
+color: #ff69b4;
+padding: 30px;
+border-radius: 20px;
+box-shadow: 0 0 20px rgba(0,0,0,0.2);
+max-width: 500px;
+margin: 30px auto;
+font-size: 1.2em;
+}
+
+#mensagem-animada {
+font-size: 1.6em;
+margin-top: 40px;
+min-height: 40px;
+}
+
+.linha-do-tempo {
+margin-top: 50px;
+background: rgba(255, 0, 0, 0.2);
+padding: 30px;
+border-radius: 20px;
+max-width: 600px;
+margin-left: auto;
+margin-right: auto;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.linha-do-tempo h2 {
+font-size: 2em;
+color: #fff;
+margin-bottom: 20px;
+}
+
+.linha-do-tempo ul {
+list-style: none;
+padding: 0;
+text-align: left;
+}
+
+.linha-do-tempo li {
+margin-bottom: 10px;
+font-size: 1.2em;
+color: #fff;
+}
+
+.linha-do-tempo .data {
+font-weight: bold;
+color: #ff0000;
+}
+</style>
+</head>
+<body>
+<h1>Feliz Dia dos Namorados, meu amor! 💘</h1>
+<p>Você é o meu presente mais lindo. EU te amo muito! 💕</p>
+
+
+<div id="mensagem-animada"></div>
+
+<div class="linha-do-tempo">
+<h2>Nossa História 💑</h2>
+<ul>
+<li><span class="data">02/02/2023:</span> Nos conhecemos</li>
+<li><span class="data">15/05/2024:</span> Nosso aniversario </li>
+<li><span class="data">04/04/2025:</span> Dia de sushi </li>
+<li><span class="data">21/03/2025:</span> Mimimos juntos</li>
+</ul>
+</div>
+
+<div class="gallery">
+<img src="IMAGENS/IMG_0241.JPG" alt="Foto 1">
+<img src="IMAGENS/IMG_1505.jpg" alt="Foto 2">
+<img src="IMAGENS/IMG_6927.JPG" alt="Foto 3">
+</div>
+
+<div class="question">
+<p>Quer sair comigo no fim de semana? 💌</p>
+<button id="simBtn" onclick="responderSim()">Sim ❤️</button>
+<button id="noBtn" onmouseover="fugir(this)">Não 😢</button>
+</div>
+<button onclick="mostrarCarta()">Clique para uma surpresa</button>
+<div class="carta" id="carta">
+<p>
+Meu amor, cada dia ao seu lado é um presente. Obrigado por me fazer sorrir, sonhar e amar com tanta intensidade. Você é tudo que eu sempre sonhei e muito mais. 💖<br><br>
+EU te amo infinitamente! 💌
+</p>
+</div>
+
+<div class="audio-player">
+<audio autoplay loop controls>
+<source src="AUDIO/Poesia Acústica _2 - Sobre Nós - Delacruz I Maria I Ducon I Luiz Lins I Diomedes I Bk_ I Kayuá(MP3_160K).mp3" type="audio/mpeg">
+Seu navegador não suporta áudio.
+</audio>
+</div>
+
+<script>
+function mostrarCarta() {
+document.getElementById("carta").style.display = "block";
+}
+
+function criarCoracao() {
+const heart = document.createElement("div");
+heart.className = "heart";
+heart.style.left = Math.random() * 100 + "vw";
+heart.style.animationDuration = (Math.random() * 2 + 3) + "s";
+document.body.appendChild(heart);
+setTimeout(() => { heart.remove(); }, 5000);
+}
+
+setInterval(criarCoracao, 300);
+
+function responderSim() {
+alert("vamos fazer varias sapecagens hehehehe");
+}
+
+function fugir(botao) {
+const i = Math.random() * (window.innerWidth - 100);
+const j = Math.random() * (window.innerHeight - 50);
+botao.style.position = "absolute";
+botao.style.top = j + "px";
+botao.style.left = i + "px";
+}
+
+const mensagens = [
+"Você ilumina meus dias como ninguém ",
+"Nosso amor é minha coisa favorita ",
+"Com você, tudo é mais bonito ",
+"Te amar é meu maior presente ",
+"Sou obcecado por você "
+];
+
+let msgIndex = 0;
+let charIndex = 0;
+
+function digitarMensagem() {
+const elemento = document.getElementById("mensagem-animada");
+if (charIndex < mensagens[msgIndex].length) {
+elemento.innerHTML += mensagens[msgIndex].charAt(charIndex);
+charIndex++;
+setTimeout(digitarMensagem, 80);
+} else {
+setTimeout(() => {
+elemento.innerHTML = "";
+msgIndex = (msgIndex + 1) % mensagens.length;
+charIndex = 0;
+digitarMensagem();
+}, 2500);
+}
+}
+
+digitarMensagem();
+</script>
+</body>
+</html>
